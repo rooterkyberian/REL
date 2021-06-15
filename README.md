@@ -57,11 +57,11 @@ To run the API locally:
 ```bash
 # Map container port 5555 to local port 5555, and use Wikipedia 2019
 # Also map the generic and wiki_2019 folders to directories in Docker container
-docker run 
-    -p 5555:5555 
-    -v /path/to/generic:/workspace/generic 
-    -v /path/to/wiki_2019:/workspace/wiki_2019 
-    --rm -it informagi/rel
+docker run \
+    -p 5555:5555 \
+    -v /path/to/generic:/workspace/generic \
+    -v /path/to/wiki_2019:/workspace/wiki_2019 \
+    --rm -it informagi/rel \
     python -m REL.server --bind 0.0.0.0 --port 5555 /workspace wiki_2019
 ```
 
