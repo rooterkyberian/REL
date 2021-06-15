@@ -22,23 +22,20 @@ For EL, the `spans` field needs to be set to an empty list. For ED, however, the
 ```python
 import requests
 
-IP_ADDRESS = "https://rel.cs.ru.nl/api"
+API_URL = "https://rel.cs.ru.nl/api"
 text_doc = "If you're going to try, go all the way - Charles Bukowski"
 
 # Example EL.
-document = {
+el_result = requests.post(API_URL, json={
     "text": text_doc,
     "spans": []
-}
+}).json()
 
 # Example ED.
-document = {
+ed_result = requests.post(API_URL, json={
     "text": text_doc,
     "spans": [(41, 16)]
-}
-
-
-API_result = requests.post("{}".format(IP_ADDRESS), json=document).json()
+}).json()
 ```
 
 # Setup package
@@ -74,7 +71,7 @@ To build the Docker image yourself, run:
 # Clone the repository
 git clone https://github.com/informagi/REL && cd REL
 # Build the Docker image
-docker build - -t informagi/rel < Dockerfile
+docker build . -t informagi/rel
 ```
 
 To run the API locally, use the same commands as mentioned in the previous section.
